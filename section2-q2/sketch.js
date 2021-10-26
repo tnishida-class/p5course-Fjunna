@@ -19,7 +19,7 @@ function setup() {
         fill(128);//gray
         rect(size * i, size * j, size, size);
         fill(0);//black
-        ellipse(size * i + 12, size * j + 12, size * 6/7);
+        ellipse(size * i + size / 2, size * j + size / 2, size * 6/7);
       }
       else{
         fill(255);
