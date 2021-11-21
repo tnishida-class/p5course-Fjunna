@@ -14,5 +14,14 @@ function setup(){
   let total = 0;
   for(let i = 0; i < scores.length; i++){ total += scores[i]; }
 
-  // BLANK[1]
+  // const dx = scores[i] / 100;// BLANK[1]
 }
+  function drawArcs(c1, c2, r) {
+    const cx = width / 2;
+    const cy = height / 2;//中心は(cx, cy)
+    for (let i = 0; i < 20; i++) {
+      let start = TWO_PI / 20 * i;
+      let stop = TWO_PI / 20 * (i + 1);
+      arc(cx, cy, r, r, start, stop, PIE);
+    }
+  }

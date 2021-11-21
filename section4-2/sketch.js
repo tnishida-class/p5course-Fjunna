@@ -18,11 +18,11 @@ function draw(){
     ellipse(b.x, b.y, b.size);
     b.x += b.vx;
     b.y += b.vy;
-    count = count + 1
+    count++;
   }
 
   if(count % 30 == 0){
-    const b1 = { x: 0, y: 0, size: 20, vx: random(5), vy: random(5) };
+    const b1 = { x: width / 2, y: height / 2, size: 20, vx: random(5) - 4 , vy: random(5) - 4 };
     balls.push(b1);
   }
 

@@ -6,19 +6,22 @@ function setup(){
   background(255);
   noStroke();
   textSize(20);
-  balloon("I love ''The prince of tennis''.");
+  balloon("I love ''The prince of tennis''.", mouseX, mouseY);
 }
 
-function balloon(t){
+function balloon(t, x, y){
+  push();
+  background(255);
   let w = textWidth(t);//吹き出しの幅
   let h = textAscent() + textDescent();//吹き出しの高さ
   let p = 2;
   fill(220, 255, 100);
-  ellipse(w, h + 1, h * 4/5);
+  ellipse(x + w, y + h + 1, h * 4/5);
   fill(255);
-  ellipse(w + 6, h + 1, h * 4/5 - 3);
+  ellipse(x + w + 6, y + h + 1, h * 4/5 - 3);
   fill(220, 255, 100);
-  rect(0, 0, w + p * 2, h + p * 2);
+  rect(x, y, w + p * 2, h + p * 2);
   fill(255, 0, 0);
-  text(t, p, h + p);
+  text(t, x + p, y + h + p);
+  pop();
 }
