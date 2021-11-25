@@ -6,7 +6,9 @@ function setup(){
   fill(0);
   crossmark(10, 10, 90, 90);
   ngmark(150, 50, 80);
-  star(250, 50, 40);
+  let n = random(3, 50);
+  let N = round(n);//nを整数にするプログラム
+  regularPolygon(N, 250, 50, 40);
 }
 
 function crossmark(x1, y1, x2, y2){
@@ -15,22 +17,22 @@ function crossmark(x1, y1, x2, y2){
 }
 
 function ngmark(cx, cy, r){
-  push();
+  push();//今までの描画スタイルを覚えておく
   noFill();
   strokeWeight(r * 0.1);
   let d = sqrt(r * r / 8);
   ellipse(cx, cy, r);
   line(cx - d, cy - d, cx + d, cy + d);
-  pop();
+  pop();//覚えておいたスタイルに戻す
 }
 
-function star(cx, cy, r){
-  beginShape();
-  for(var i = 0; i < 5; i++){
-    let theta = TWO_PI * i * 2 / 5 - HALF_PI;
+function regularPolygon(N, cx, cy, r){
+  beginShape();//点つなぎを始める
+  for(var i = 0; i < N; i++){
+    let theta = TWO_PI * i * 1 / N - HALF_PI;
     let x = cx + cos(theta) * r;
     let y = cy + sin(theta) * r;
-    vertex(x,y);
+    vertex(x,y);//次に繋ぐ点を1つ増やす
   }
-  endShape(CLOSE);
+  endShape(CLOSE);//点つなぎを終える
 }

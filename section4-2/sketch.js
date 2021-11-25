@@ -7,6 +7,8 @@ let balls;
 function setup(){
   createCanvas(windowWidth, windowHeight);
   balls = [];
+  count = 0;
+
 }
 
 function draw(){
@@ -16,17 +18,27 @@ function draw(){
     ellipse(b.x, b.y, b.size);
     b.x += b.vx;
     b.y += b.vy;
+    count++;
   }
+
+  if(count % 30 == 0){
+    const b1 = { x: width / 2, y: height / 2, size: 20, vx: random(5) - 4 , vy: random(5) - 4 };
+    balls.push(b1);
+  }
+
 }
 
 function mouseDragged(){
   const dx = mouseX - pmouseX;
   const dy = mouseY - pmouseY;
+  const s = random(10, 50);
   if(mag(dx, dy) > 5){
-    const b = { x: mouseX, y: mouseY, size: 20, vx: dx, vy: dy };
-    balls.push(b);
+    const b2 = { x: mouseX, y: mouseY, size: s, vx: dx, vy: dy };
+    balls.push(b2);
   }
+  if(b.x > width | b.y > height){balls.pop(b)}
 }
+
 
 function windowResized(){
   resizeCanvas(windowWidth, windowHeight);
